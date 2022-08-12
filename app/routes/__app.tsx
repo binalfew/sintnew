@@ -138,8 +138,7 @@ export default function AppRoute() {
                         to="."
                         className="-m-2 block p-2 font-medium text-gray-900"
                       >
-                        Hello
-                        {/* {user.firstName} {user.lastName} */}
+                        Hello, {user.firstName}
                       </Link>
                     </div>
                     <div className="flow-root">
@@ -242,8 +241,7 @@ export default function AppRoute() {
                     to="."
                     className="text-sm font-medium text-white hover:text-gray-100"
                   >
-                    Hello
-                    {/* {user.firstName} {user.lastName} */}
+                    Hello, {user.firstName}
                   </Link>
 
                   <span className="h-6 w-px bg-gray-600" aria-hidden="true" />

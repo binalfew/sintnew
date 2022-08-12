@@ -8,20 +8,23 @@ describe("smoke tests", () => {
   it("should allow you to register and login", () => {
     const loginForm = {
       email: `${faker.internet.userName()}@example.com`,
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
+      telephone: faker.phone.number("+251 91 ### ## ##"),
       password: faker.internet.password(),
     };
+
     cy.then(() => ({ email: loginForm.email })).as("user");
 
     cy.visitAndCheck("/default");
     cy.findByRole("link", { name: /sign up/i }).click();
 
     cy.findByRole("textbox", { name: /email/i }).type(loginForm.email);
+    cy.findByLabelText(/first name/i).type(loginForm.firstName);
+    cy.findByLabelText(/last name/i).type(loginForm.lastName);
+    cy.findByLabelText(/telephone/i).type(loginForm.telephone);
     cy.findByLabelText(/password/i).type(loginForm.password);
     cy.findByRole("button", { name: /create account/i }).click();
-
-    // cy.findByRole("link", { name: /notes/i }).click();
-    // cy.findByRole("button", { name: /logout/i }).click();
-    // cy.findByRole("link", { name: /log in/i });
   });
 
   it("should allow you to make a note", () => {
