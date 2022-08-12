@@ -57,7 +57,7 @@ export default function App() {
   }, [transition.state]);
 
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full bg-gray-50">
       <head>
         <Meta />
         <Links />
