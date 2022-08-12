@@ -11,11 +11,13 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
   useTransition,
 } from "@remix-run/react";
 import NProgress from "nprogress";
 import nProgressStyles from "nprogress/nprogress.css";
 import { useEffect } from "react";
+import { getEnv } from "~/env.server";
 import { getUser } from "./session.server";
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 NProgress.configure({ showSpinner: false });
@@ -35,20 +37,25 @@ export const meta: MetaFunction = () => ({
 
 type LoaderData = {
   user: Awaited<ReturnType<typeof getUser>>;
+  ENV: ReturnType<typeof getEnv>;
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
   return json<LoaderData>({
     user: await getUser(request),
+    ENV: getEnv(),
   });
 };
 
 export default function App() {
   const transition = useTransition();
+  const data = useLoaderData<typeof loader>();
+
   useEffect(() => {
     if (transition.state === "idle") NProgress.done();
     else NProgress.start();
   }, [transition.state]);
+
   return (
     <html lang="en" className="h-full">
       <head>
@@ -59,6 +66,11 @@ export default function App() {
         <Outlet />
         <ScrollRestoration />
         <Scripts />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(data.ENV)};`,
+          }}
+        />
         <LiveReload />
       </body>
     </html>
