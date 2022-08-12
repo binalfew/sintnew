@@ -3,8 +3,7 @@ import { json, redirect } from "@remix-run/node";
 import { Form, useCatch, useLoaderData } from "@remix-run/react";
 import invariant from "tiny-invariant";
 
-import { deleteNote } from "~/models/note.server";
-import { getNote } from "~/models/note.server";
+import { deleteNote, getNote } from "~/models/note.server";
 import { requireUserId } from "~/session.server";
 
 type LoaderData = {
@@ -28,7 +27,7 @@ export const action: ActionFunction = async ({ request, params }) => {
 
   await deleteNote({ userId, id: params.noteId });
 
-  return redirect("/notes");
+  return redirect("/default/notes");
 };
 
 export default function NoteDetailsPage() {
