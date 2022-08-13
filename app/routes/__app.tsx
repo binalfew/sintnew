@@ -122,7 +122,7 @@ export default function AppRoute() {
                       {adminUser ? (
                         <>
                           <Link
-                            to="."
+                            to="/admin/settings"
                             className="text-sm font-medium text-white hover:text-gray-100"
                           >
                             Admin
@@ -225,7 +225,7 @@ export default function AppRoute() {
                   {adminUser ? (
                     <>
                       <Link
-                        to="."
+                        to="/admin/settings"
                         className="text-sm font-medium text-white hover:text-gray-100"
                       >
                         Admin

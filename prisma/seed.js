@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const prisma = new PrismaClient();
 
 async function seed() {
-  const email = "binalfew@sintnew.com";
+  const email = "admin@sintnew.com";
   const firstName = "Binalfew";
   const lastName = "Kassa";
   const telephone = "+251 91 173 62 91";
@@ -14,7 +14,7 @@ async function seed() {
     // no worries if it doesn't exist yet
   });
 
-  const hashedPassword = await bcrypt.hash("binalfewiscool", 10);
+  const hashedPassword = await bcrypt.hash("adminiscool", 10);
 
   const user = await prisma.user.create({
     data: {
