@@ -9,6 +9,8 @@ export default defineConfig({
         baseUrl: `http://localhost:${port}`,
         video: !process.env.CI,
         screenshotOnRunFailure: !process.env.CI,
+        viewportWidth: 1536,
+        viewportHeight: 960,
       };
 
       // To use this:
