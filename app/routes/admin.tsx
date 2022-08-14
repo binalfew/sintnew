@@ -19,6 +19,7 @@ import { requireAdminUser } from "~/session.server";
 const navigation = [
   { name: "Settings", href: "/admin/settings", icon: CogIcon },
   { name: "Categories", href: "/admin/categories", icon: FolderIcon },
+  { name: "Products", href: "/admin/products", icon: FolderIcon },
   { name: "Store", href: "/", icon: ShoppingCartIcon },
 ];
 
