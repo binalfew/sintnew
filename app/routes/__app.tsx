@@ -433,7 +433,7 @@ export default function AppRoute() {
           Footer
         </h2>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="border-t border-gray-200">
+          <div className="">
             <div className="pt-16 pb-20">
               <div className="md:flex md:justify-center">
                 <FullSintnewLogo size="md" position="left" />
