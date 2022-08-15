@@ -6,8 +6,8 @@ export function getProduct({ id }: Pick<Product, "id">) {
   return prisma.product.findFirst({ where: { id } });
 }
 
-export async function getProducts() {
-  const products = await prisma.product.findMany({
+export async function getProducts({ categoryId }: Pick<Product, "categoryId">) {
+  const criteria: any = {
     select: {
       id: true,
       name: true,
@@ -24,7 +24,13 @@ export async function getProducts() {
       },
     },
     orderBy: { updatedAt: "desc" },
-  });
+  };
+
+  if (categoryId) {
+    criteria.where = { categoryId };
+  }
+
+  const products = await prisma.product.findMany(criteria);
 
   return products.map((product) => ({
     ...product,

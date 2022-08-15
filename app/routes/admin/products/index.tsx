@@ -10,7 +10,7 @@ type LoaderData = {
 
 export const loader: LoaderFunction = async ({ request }) => {
   await requireAdminUser(request);
-  const products = await getProducts();
+  const products = await getProducts({ categoryId: null });
   return json<LoaderData>({ products });
 };
 

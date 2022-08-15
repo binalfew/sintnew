@@ -1,6 +1,6 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import { getProductCategories } from "~/models/category.server";
 
 type LoaderData = {
@@ -35,10 +35,10 @@ export default function CategoriesRoute() {
               </div>
               <div className="flex flex-1 flex-col space-y-2 p-4">
                 <h3 className="text-sm font-medium text-gray-900">
-                  <a href={category.id}>
+                  <Link to={`/products?c=${category.id}`}>
                     <span aria-hidden="true" className="absolute inset-0" />
                     {category.name}
-                  </a>
+                  </Link>
                 </h3>
               </div>
             </div>
